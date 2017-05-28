@@ -1,4 +1,4 @@
-O iGarden é um projeto de IoT desenvolvido para a disciplina Engenharia de Software do Instituto de Computação da Unicamp. Ele consiste no plantio automatizado de plantas.
+O iGarden é um projeto de IoT desenvolvido para a disciplina Engenharia de Software do Instituto de Computação da Unicamp. Ele consiste na coleta de informaçõessobre plantas.
 
 ### To-Dos
  - Desenvolver o Front-End
@@ -7,24 +7,13 @@ O iGarden é um projeto de IoT desenvolvido para a disciplina Engenharia de Soft
 ### Referências
 O iGarden usa vários projetos open source para funcionar corretamente:
 * [Vim] - O melhor editor que se pode utilizar
-* [Twitter Bootstrap] - great UI boilerplate for modern web apps
-* [node.js] - evented I/O for the backend
-* [Express] - fast node.js network app framework [@tjholowaychuk]
-* [Gulp] - the streaming build system
-* [Breakdance](http://breakdance.io) - HTML to Markdown converter
-* [jQuery] - duh
+* [Twitter Bootstrap] - Um boilerplate muito utilizado em todo tipo de projetos
+* [Circles] - Uma biblioteca leve para gerar graficos circulares em SVG.
+* [Bootstrap-toggle] - Um plugin flexivel que transforma checkboxes em toggles.
+* [Thingspeak] - Serviço online de envio de dados para IoT.
+* [jQuery] - Requerido por praticamente todos os sites que se utilizam de javascript
 
 E é claro a ajuda de [Jesus][jesus]!
-
-### Instalação
-
-O iGarden requer [Node.js](https://nodejs.org/) v4+ para rodar.
-Instale as depenências no servidor.
-```sh
-$ cd dillinger
-$ npm install -d
-$ node app
-```
 
 Licença
 ----
@@ -33,18 +22,12 @@ MIT
 
 [//]: # ()
 
-   [dill]: <https://github.com/joemccann/dillinger>
-   [git-repo-url]: <https://github.com/joemccann/dillinger.git>
-   [john gruber]: <http://daringfireball.net>
-   [df1]: <http://daringfireball.net/projects/markdown/>
-   [markdown-it]: <https://github.com/markdown-it/markdown-it>
+   [Bootstrap-toggle]: <http://www.bootstraptoggle.com>
    [Vim]: <http://www.vim.org>
-   [node.js]: <http://nodejs.org>
+   [circles]: <https://github.com/lugolabs/circles>
    [Twitter Bootstrap]: <http://twitter.github.com/bootstrap/>
    [jQuery]: <http://jquery.com>
-   [@tjholowaychuk]: <http://twitter.com/tjholowaychuk>
-   [express]: <http://expressjs.com>
+   [Thingspeak]: <https://thingspeak.com/>
    [AngularJS]: <http://angularjs.org>
-   [Gulp]: <http://gulpjs.com>
 
    [jesus]: <https://github.com/jesus>
