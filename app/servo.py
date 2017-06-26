@@ -11,11 +11,14 @@ p.start(7.5)
 try:
 	while True:
 		p.ChangeDutyCycle(7.5)
-		time.sleep(1)
+		print("Position 1")
+		time.sleep(2)
 		p.ChangeDutyCycle(12.5)
-		time.sleep(1)
+		print("Position 2")
+		time.sleep(2)
 		p.ChangeDutyCycle(2.5)
-		time.sleep(1)
+		print("Position 3")
+		time.sleep(2)
 
 except KeyboardInterrupt:
 	GPIO.cleanup()
