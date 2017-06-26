@@ -16,9 +16,13 @@ channel_id = "293365"
 GPIO.setmode(GPIO.BOARD)
 GPIO.setup(7,GPIO.OUT)
 
+GPIO.setup(11, GPIO.OUT) 
+GPIO.output(11, GPIO.HIGH)
+
+
 # Define the servo interface
 servo = GPIO.PWM(7,50)
-servo.start(7.5)
+servo.start(2.5)
 
 # Create SPI
 spi = spidev.SpiDev()
@@ -44,33 +48,33 @@ while True:
     light_porc = light_value*100/1023
     soil_value = readadc(soil)
     soil_porc  = (soil_value*100/1023 - 100) * -1
-    print "---------------------------------------"
-    print("Light Value: %d" % light_value)
-    print("Light Porcenture: %d" % light_porc)
-    print("Soil Value: %d" % soil_value)
-    print("Soil Porcenture: %d" % soil_porc)
+#    print "---------------------------------------"
+#    print("Light Value: %d" % light_value)
+#    print("Light Porcenture: %d" % light_porc)
+#    print("Soil Value: %d" % soil_value)
+#    print("Soil Porcenture: %d" % soil_porc)
 
     # Send it to Thingspeak
-    print(channel.get())
+#    print(channel.get())
     update = urllib.urlopen("https://api.thingspeak.com/update?key=" + write_key + "&field1=" + str(light_porc) 
 + "&field2=" + str(light_value) + "&field3=" + str(soil_porc) + "&field4=" + str(soil_value))
 
 
     # Calculate, using Thingspeak, the postion of our servo motor 
     servo_position = urllib.urlopen("https://api.thingspeak.com/channels/" + channel_id + "/fields/5/last.txt").read()
-    print(servo_position)
-    if servo_position == 1
-        p.ChangeDutyCycle(12.5)
-    else
-        p.ChangeDutyCycle(7.5)
+#    print(servo_position)
+    if servo_position == "1":
+        servo.ChangeDutyCycle(7.5)
+    else:
+        servo.ChangeDutyCycle(2.5)
     
     # See if we need to open the relay (water the plant)
     need_water = urllib.urlopen("https://api.thingspeak.com/channels/" + channel_id + "/fields/6/last.txt").read()
-    if need_water == 1
-        update = urllib.urlopen("https://api.thingspeak.com/update?key=" + write_key + "&field1=" + str(light_porc) 
-
-
-
-
+#    if need_water = "1":
+    update = urllib.urlopen("https://api.thingspeak.com/update?key=" + write_key + "&field1=" + str(light_porc)) 
+    GPIO.output(11, GPIO.LOW) # Start the bomb
+    time.sleep(5)
+    GPIO.output(11, GPIO.HIGH) # Start the bomb
+        
 
     time.sleep(delay)
