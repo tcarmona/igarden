@@ -56,4 +56,3 @@ jQuery( document ).ready(function() {
 	  jQuery.get("https://api.thingspeak.com/update?key=" + write_key + "&field6=1");
 	});
 });
-});
