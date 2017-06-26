@@ -1,48 +1,55 @@
-var ph = Circles.create({
-          id:                  'circles-ph',
-          radius:              60,
-          value:               78,
-          maxValue:            100,
-          width:               10,
-          text:                function(value){return value + '%';},
-          colors:              ['#569532', '#1C4A00'],
-          duration:            400,
-          wrpClass:            'circles-wrp',
-          textClass:           'circles-text',
-          valueStrokeClass:    'circles-valueStroke',
-          maxValueStrokeClass: 'circles-maxValueStroke',
-          styleWrapper:        true,
-          styleText:           true
-});
-var humidity = Circles.create({
-          id:                  'circles-hum',
-          radius:              60,
-          value:               42,
-          maxValue:            100,
-          width:               10,
-          text:                function(value){return value + '%';},
-          colors:              ['#236267', '#012F34'],
-          duration:            400,
-          wrpClass:            'circles-wrp',
-          textClass:           'circles-text',
-          valueStrokeClass:    'circles-valueStroke',
-          maxValueStrokeClass: 'circles-maxValueStroke',
-          styleWrapper:        true,
-          styleText:           true
-});
-var lum = Circles.create({
-          id:                  'circles-lum',
-          radius:              60,
-          value:               66,
-          maxValue:            100,
-          width:               10,
-          text:                function(value){return value + '%';},
-          colors:              ['#AAA839', '#555300'],
-          duration:            400,
-          wrpClass:            'circles-wrp',
-          textClass:           'circles-text',
-          valueStrokeClass:    'circles-valueStroke',
-          maxValueStrokeClass: 'circles-maxValueStroke',
-          styleWrapper:        true,
-          styleText:           true
+jQuery( document ).ready(function() {
+	function refresh_circles() {
+	  channel_id = "293365"
+	  jQuery.get("https://api.thingspeak.com/channels/" + channel_id + "/fields/1/last.txt", function(data) {
+	    var umidity = Circles.create({
+		  id:                  'circles-hum',
+		  radius:              60,
+		  value:               data,
+		  maxValue:            100,
+		  width:               10,
+		  text:                function(value){return value + '%';},
+		  colors:              ['#236267', '#012F34'],
+		  duration:            400,
+		  wrpClass:            'circles-wrp',
+		  textClass:           'circles-text',
+		  valueStrokeClass:    'circles-valueStroke',
+		  maxValueStrokeClass: 'circles-maxValueStroke',
+		  styleWrapper:        true,
+		  styleText:           true
+	    });
+	  });
+
+
+
+	  jQuery.get("https://api.thingspeak.com/channels/" + channel_id + "/fields/3/last.txt", function(data) {
+	    var lum = Circles.create({
+		  id:                  'circles-lum',
+		  radius:              60,
+		  value:               data,
+		  maxValue:            100,
+		  width:               10,
+		  text:                function(value){return value + '%';},
+		  colors:              ['#AAA839', '#555300'],
+		  duration:            400,
+		  wrpClass:            'circles-wrp',
+		  textClass:           'circles-text',
+		  valueStrokeClass:    'circles-valueStroke',
+		  maxValueStrokeClass: 'circles-maxValueStroke',
+		  styleWrapper:        true,
+		  styleText:           true
+	    });
+	  });
+	}
+
+	refresh_circles();
+	write_key = "EFGX918WTOL8UZKT";
+	jQuery("#coberto").change(function() {
+	  if(this.checked) {
+	    jQuery.get("https://api.thingspeak.com/update?key=" + write_key + "&field5=1");
+	  }
+	  else {
+	    jQuery.get("https://api.thingspeak.com/update?key=" + write_key + "&field5=0");
+	  }
+	});
 });

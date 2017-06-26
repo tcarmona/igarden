@@ -25,18 +25,12 @@
         <div class="jumbotron container">
         <h1>Cebolinha</h1>
       	<div class="row">
-          <div class="col-lg-1">
-	    <img src="img/cebolinha.jpg" style="height:170px;margin:0px 10px;"\>
-	  </div>
-	  <div class="col-lg-1">
-	    <input checked data-on="Coberto" data-off="Descoberto" data-toggle="toggle" type="checkbox"\>
-            <button type="button" class="btn btn-primary" style="margin-top:5px">Irrigar</button>
-          </div>
-	  <div class="col-lg-1">
+          <div class="col-lg-3">
+	    <img src="img/cebolinha.jpg" style="height:170px;margin:0px 10px;" class="pull-left">
 	  </div>
           <div class="col-lg-3">
-            <div class="circle" id="circles-ph"></div>
-	    <p>pH</p>
+	    <input id="coberto" checked data-on="Coberto" data-off="Descoberto" data-toggle="toggle" type="checkbox">
+	    <button id="irrigar" type="button" class="btn btn-primary" style="margin-top:5px">Irrigar</button>
           </div>
           <div class="col-lg-3">
             <div class="circle" id="circles-hum"></div>
