@@ -1,6 +1,6 @@
 jQuery( document ).ready(function() {
 	function refresh_circles() {
-	  channel_id = "293365"
+	  var channel_id = "293365";
 	  jQuery.get("https://api.thingspeak.com/channels/" + channel_id + "/fields/1/last.txt", function(data) {
 	    var umidity = Circles.create({
 		  id:                  'circles-hum',
@@ -19,9 +19,6 @@ jQuery( document ).ready(function() {
 		  styleText:           true
 	    });
 	  });
-
-
-
 	  jQuery.get("https://api.thingspeak.com/channels/" + channel_id + "/fields/3/last.txt", function(data) {
 	    var lum = Circles.create({
 		  id:                  'circles-lum',
@@ -43,7 +40,7 @@ jQuery( document ).ready(function() {
 	}
 
 	refresh_circles();
-	write_key = "EFGX918WTOL8UZKT";
+	var write_key = "EFGX918WTOL8UZKT";
 	jQuery("#coberto").change(function() {
 	  if(jQuery(this).prop('checked')) {
 	    jQuery.get("https://api.thingspeak.com/update?key=" + write_key + "&field5=1");
