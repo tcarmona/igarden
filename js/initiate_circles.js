@@ -1,20 +1,4 @@
-var ph = Circles.create({
-          id:                  'circles-ph',
-          radius:              60,
-          value:               78,
-          maxValue:            100,
-          width:               10,
-          text:                function(value){return value + '%';},
-          colors:              ['#569532', '#1C4A00'],
-          duration:            400,
-          wrpClass:            'circles-wrp',
-          textClass:           'circles-text',
-          valueStrokeClass:    'circles-valueStroke',
-          maxValueStrokeClass: 'circles-maxValueStroke',
-          styleWrapper:        true,
-          styleText:           true
-});
-var humidity = Circles.create({
+var umidity = Circles.create({
           id:                  'circles-hum',
           radius:              60,
           value:               42,
