@@ -1,5 +1,6 @@
 #!/usr/bin/python
  
+import RPi.GPIO as GPIO
 import spidev
 import time
 import thingspeak
@@ -11,8 +12,13 @@ light = 0  #Analog pin of the data cable of the light sensor
 soil = 1   #Analog pin of the data cable of the soil moisture sensor
 write_key = "EFGX918WTOL8UZKT"
 read_key = "6UKWF6OLI9M3OUIQ"
-channel_id = 293365
+channel_id = "293365"
+GPIO.setmode(GPIO.BOARD)
+GPIO.setup(7,GPIO.OUT)
 
+# Define the servo interface
+servo = GPIO.PWM(7,50)
+servo.start(7.5)
 
 # Create SPI
 spi = spidev.SpiDev()
@@ -29,7 +35,6 @@ def readadc(adcnum):
     r = spi.xfer2([1, 8 + adcnum << 4, 0])
     data = ((r[1] & 3) << 8) + r[2]
     return data
-    
 
 
 # Main fucntion of the program 
@@ -48,6 +53,24 @@ while True:
     # Send it to Thingspeak
     print(channel.get())
     update = urllib.urlopen("https://api.thingspeak.com/update?key=" + write_key + "&field1=" + str(light_porc) 
-+ "&field2=" + str(light_value) + "&field3=" + str(soil_porc) + "&field4" + str(soil_value))
++ "&field2=" + str(light_value) + "&field3=" + str(soil_porc) + "&field4=" + str(soil_value))
+
+
+    # Calculate, using Thingspeak, the postion of our servo motor 
+    servo_position = urllib.urlopen("https://api.thingspeak.com/channels/" + channel_id + "/fields/5/last.txt").read()
+    print(servo_position)
+    if servo_position == 1
+        p.ChangeDutyCycle(12.5)
+    else
+        p.ChangeDutyCycle(7.5)
+    
+    # See if we need to open the relay (water the plant)
+    need_water = urllib.urlopen("https://api.thingspeak.com/channels/" + channel_id + "/fields/6/last.txt").read()
+    if need_water == 1
+        update = urllib.urlopen("https://api.thingspeak.com/update?key=" + write_key + "&field1=" + str(light_porc) 
+
+
+
+
 
     time.sleep(delay)
