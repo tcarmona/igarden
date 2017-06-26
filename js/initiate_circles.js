@@ -1,7 +1,7 @@
 jQuery( document ).ready(function() {
 	function refresh_circles() {
 	  var channel_id = "293365";
-	  jQuery.get("https://api.thingspeak.com/channels/" + channel_id + "/fields/1/last.txt", function(data) {
+	  jQuery.get("https://api.thingspeak.com/channels/" + channel_id + "/fields/3/last.txt", function(data) {
 	    var umidity = Circles.create({
 		  id:                  'circles-hum',
 		  radius:              60,
@@ -19,7 +19,7 @@ jQuery( document ).ready(function() {
 		  styleText:           true
 	    });
 	  });
-	  jQuery.get("https://api.thingspeak.com/channels/" + channel_id + "/fields/3/last.txt", function(data) {
+	  jQuery.get("https://api.thingspeak.com/channels/" + channel_id + "/fields/1/last.txt", function(data) {
 	    var lum = Circles.create({
 		  id:                  'circles-lum',
 		  radius:              60,
