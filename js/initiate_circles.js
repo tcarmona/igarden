@@ -45,11 +45,15 @@ jQuery( document ).ready(function() {
 	refresh_circles();
 	write_key = "EFGX918WTOL8UZKT";
 	jQuery("#coberto").change(function() {
-	  if(this.checked) {
+	  if(jQuery(this).prop('checked')) {
 	    jQuery.get("https://api.thingspeak.com/update?key=" + write_key + "&field5=1");
 	  }
 	  else {
 	    jQuery.get("https://api.thingspeak.com/update?key=" + write_key + "&field5=0");
 	  }
 	});
+	jQuery("#irrigar").click(function() {
+	  jQuery.get("https://api.thingspeak.com/update?key=" + write_key + "&field6=1");
+	});
+});
 });
