@@ -35,6 +35,7 @@ while True:
     print("===========")
     print("NEW REQUEST")
     print("===========")
+    print("The current position is = " + current_position);
     # Calculate, using Thingspeak, the postion of our servo motor 
     servo_position = urllib.urlopen("https://api.thingspeak.com/channels/" + channel_id + "/fields/5/last.txt").read()
     print("The servor position on thingspeak is " + servo_position)
