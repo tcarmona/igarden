@@ -35,7 +35,7 @@ while True:
     print("===========")
     print("NEW REQUEST")
     print("===========")
-    print("The current position is = " + current_position);
+    print("The current position is = " + str(current_position));
     # Calculate, using Thingspeak, the postion of our servo motor 
     servo_position = urllib.urlopen("https://api.thingspeak.com/channels/" + channel_id + "/fields/5/last.txt").read()
     print("The servor position on thingspeak is " + servo_position)
@@ -45,7 +45,7 @@ while True:
         current_position = 1
 #        time.sleep(3)
 #        servo.stop()
-    elif current_position != 0:
+    elif servo_position == "0" and current_position != 0:
         print("Changing servo to 0")
 #        servo.start(2.5)
         current_position = 0

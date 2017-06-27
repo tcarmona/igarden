@@ -7,7 +7,7 @@ import thingspeak
 import urllib
 
 # Define Variables
-delay = 20 #Thingspeak free has a delay of 15 seconds for data update
+delay = 35 #Thingspeak free has a delay of 15 seconds for data update
 light = 0  #Analog pin of the data cable of the light sensor
 soil = 1   #Analog pin of the data cable of the soil moisture sensor
 write_key = "EFGX918WTOL8UZKT"
@@ -69,7 +69,7 @@ while True:
         current_position = 1
         time.sleep(3)
         servo.stop()
-    elif current_position != 0:
+    elif servo_position == "0" and current_position != 0:
         servo.start(2.5)
         current_position = 0
         time.sleep(3)
