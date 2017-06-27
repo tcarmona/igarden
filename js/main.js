@@ -43,13 +43,13 @@ jQuery( document ).ready(function() {
 	var write_key = "EFGX918WTOL8UZKT";
 	jQuery("#coberto").change(function() {
 	  if(jQuery(this).prop('checked')) {
-	    jQuery.get("https://api.thingspeak.com/update?key=" + write_key + "&field5=1");
+            jQuery.post( "https://api.thingspeak.com/update" , "key=" + write_key + "&field5=1")
 	  }
 	  else {
-	    jQuery.get("https://api.thingspeak.com/update?key=" + write_key + "&field5=0");
+            jQuery.post( "https://api.thingspeak.com/update" , "key=" + write_key + "&field5=1")
 	  }
 	});
 	jQuery("#irrigar").click(function() {
-	  jQuery.get("https://api.thingspeak.com/update?key=" + write_key + "&field6=1");
+          jQuery.post( "https://api.thingspeak.com/update" , "key=" + write_key + "&field6=1")
 	});
 });
