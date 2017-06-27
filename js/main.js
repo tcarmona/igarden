@@ -40,7 +40,7 @@ jQuery( document ).ready(function() {
 	}
 
 	refresh_circles();
-	var write_key = "EFGX918WTOL8UZKT";
+	var write_key = "PKD0HUN3RFC9J68T";
 	jQuery("#coberto").change(function() {
 	  if(jQuery(this).prop('checked')) {
             jQuery.post( "https://api.thingspeak.com/update" , "key=" + write_key + "&field5=1")
