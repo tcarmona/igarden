@@ -46,7 +46,7 @@ jQuery( document ).ready(function() {
             jQuery.post( "https://api.thingspeak.com/update" , "key=" + write_key + "&field5=1")
 	  }
 	  else {
-            jQuery.post( "https://api.thingspeak.com/update" , "key=" + write_key + "&field5=1")
+            jQuery.post( "https://api.thingspeak.com/update" , "key=" + write_key + "&field5=0")
 	  }
 	});
 	jQuery("#irrigar").click(function() {
